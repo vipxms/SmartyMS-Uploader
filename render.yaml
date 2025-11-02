@@ -1,12 +1,15 @@
 services:
   - type: web
     name: Text Leech Bot
-    plan: free
     env: docker
+    plan: free
+    region: singapore  # ⚡ Keep in Singapore for max Render throughput
     dockerfilePath: Dockerfile
     repo: https://github.com/AshutoshGoswami24/text-leech-bot-for-render
     branch: main
     autoDeploy: false
+
+    # Environment variables
     envVars:
       - key: BOT_TOKEN
         sync: false
@@ -17,4 +20,16 @@ services:
       - key: WEBHOOK
         sync: false
       - key: PORT
-        value: 8000  # Default port value, update if needed
+        value: 8000
+
+      # ✅ NEW: Optional stabilizer tuning
+      - key: TARGET_SPEED_MBPS
+        value: "20"
+
+      # ✅ NEW: Enable async speed stabilizer + process control
+      - key: ENABLE_FORCE_CLOSE
+        value: "true"
+
+      # ✅ Optional: Use direct DNS for stable throughput
+      - key: DNS_FLUSH
+        value: "true"
