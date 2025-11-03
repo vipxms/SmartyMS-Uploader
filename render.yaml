@@ -33,3 +33,7 @@ services:
       # ✅ Optional: Use direct DNS for stable throughput
       - key: DNS_FLUSH
         value: "true"
+
+      # ✅ NEW: Local Push Booster interval (in seconds)
+      - key: BOOST_INTERVAL
+        value: "30"
